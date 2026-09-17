@@ -1,5 +1,7 @@
 # Kenya Data
 
+[![CI](https://github.com/ToshGitonga0/kenya-data/actions/workflows/ci.yml/badge.svg)](https://github.com/ToshGitonga0/kenya-data/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > A structured, validated, versioned, developer-friendly data layer for Kenya.
 
 Kenya Data is an open-source project building a trusted data layer for
@@ -94,6 +96,26 @@ See [docs/data-model.md](docs/data-model.md).
 
 SDK version and dataset version are independent — see
 [docs/versioning.md](docs/versioning.md).
+
+## Installation
+
+Not yet published to PyPI or npm. Until then, install from a local
+checkout:
+
+```bash
+git clone https://github.com/ToshGitonga0/kenya-data.git
+cd kenya-data
+make build-db   # builds data/kenya.db from data/approved/
+pip install -e packages/python
+cd packages/typescript && npm install && npm run build
+```
+
+Once published (see [docs/publishing.md](docs/publishing.md)):
+
+```bash
+pip install kenya-data
+npm install @kenya-data/core
+```
 
 ## Development
 

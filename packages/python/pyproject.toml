@@ -17,6 +17,11 @@ classifiers = [
 ]
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/ToshGitonga0/kenya-data"
+Repository = "https://github.com/ToshGitonga0/kenya-data"
+Issues = "https://github.com/ToshGitonga0/kenya-data/issues"
+
 [project.optional-dependencies]
 dev = ["pytest>=7.0", "mypy>=1.0", "ruff>=0.4"]
 

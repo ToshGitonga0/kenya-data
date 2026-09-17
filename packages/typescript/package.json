@@ -12,7 +12,9 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "node --loader ts-node/esm --test tests/*.test.ts",
@@ -31,5 +33,17 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.0",
     "typescript-eslint": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToshGitonga0/kenya-data.git"
+  },
+  "homepage": "https://github.com/ToshGitonga0/kenya-data#readme",
+  "bugs": {
+    "url": "https://github.com/ToshGitonga0/kenya-data/issues"
+  },
+  "author": "ToshGitonga0",
+  "publishConfig": {
+    "access": "public"
   }
 }
