@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python3 -m pip install -e packages/python[dev]
+      - run: bash scripts/build-database/build-db.sh
+      - run: python3 scripts/validate-data/validate.py
+      - run: cd packages/python && python3 -m pytest
+      - run: cd packages/python && python3 -m ruff check src tests
+      - run: cd packages/python && python3 -m mypy src
+
+  typescript-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: cd packages/typescript && npm install
+      - run: cd packages/typescript && npm test
+      - run: cd packages/typescript && npm run lint

@@ -1,0 +1,40 @@
+# Real source registry entry — backs the data shipped in
+# data/approved/kenya_administrative.json. See
+# docs/source-policy.md for what authority_level and
+# validation_status mean.
+
+source:
+  id: kenya-regions-npm
+  name: kenya-regions
+  organization: "Nicanor Korir (open-source project)"
+  source_type: community
+  dataset_name: "counties.json, constituencies.json, wards.json, subcounties.json"
+  source_url: https://github.com/nicanor-korir/kenya-regions
+  document_name: null
+  publication_date: null
+  retrieved_at: "2026-09-16"
+  geographic_scope: national
+  administrative_level: "county, constituency, ward, sub_county"
+  reference_year: 2019
+  version: null
+  license: MIT
+  authority_level: secondary
+  methodology: >
+    Aggregates and cross-checks several primary sources: the IEBC
+    county/constituency/ward hierarchy (a 1450-row listing), OCHA's
+    Common Operational Dataset (COD-AB) admin1/admin2 layers, the KNBS
+    2009 and 2019 censuses, and the Constitution of Kenya 2010
+    (Articles 97, 98, 177 for seat counts). Its own
+    data/sources/README.md documents per-file provenance and known
+    cross-source disagreements (e.g. it explicitly rejects the OCHA
+    admin2 layer's Nairobi sub-county boundaries and a reversed
+    Kajiado East/West pair in favour of the gazetted IEBC wards).
+  notes: >
+    This is where data/approved/kenya_administrative.json actually
+    comes from. Kenya Data has NOT yet independently re-verified every
+    value against the IEBC/KNBS primaries directly — that is why
+    validation_status below is "under_review" rather than "validated".
+    Treat this as a well-documented secondary aggregation, not a
+    primary source, until that review happens (see
+    research/investigations/ for anyone picking that up).
+  validation_status: under_review

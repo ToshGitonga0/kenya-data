@@ -1,0 +1,26 @@
+# Source registry entry template.
+# Copy this file to research/source-registry/<slug>.yaml and fill it in.
+# Do NOT invent values you have not actually verified — use `null`.
+
+source:
+  id: null                    # stable slug, e.g. "knbs-census-2019"
+  name: null                  # human-readable source name
+  organization: null          # e.g. "Kenya National Bureau of Statistics"
+  source_type: null           # government_publication | official_dataset |
+                               # statutory_body | academic | commercial |
+                               # community | other
+  dataset_name: null
+  source_url: null
+  document_name: null
+  publication_date: null      # ISO 8601, or null if unknown
+  retrieved_at: null          # ISO 8601 — when a contributor actually fetched it
+  geographic_scope: null      # e.g. "national", "county:Nakuru"
+  administrative_level: null  # county | constituency | ward | sub_county |
+                               # location | sub_location
+  reference_year: null        # the year the DATA represents, not the year retrieved
+  version: null
+  license: null
+  authority_level: null       # primary | secondary | tertiary — see docs/source-policy.md
+  methodology: null           # how the source itself collected/derived the data
+  notes: null
+  validation_status: unreviewed  # unreviewed | under_review | validated | rejected
