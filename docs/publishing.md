@@ -19,4 +19,4 @@ Research
 Both the Python package build/publish and the npm package
 build/publish are manual, deliberate actions taken by a maintainer —
 this repository does not include CI automation that publishes
-packages, and `setup.sh` never runs any of these steps.
+packages.
