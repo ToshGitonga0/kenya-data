@@ -12,11 +12,11 @@
       "import": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist", "data/kenya.db"],
   "scripts": {
     "build": "tsc",
+    "prepare-db": "mkdir -p data && cp ../../data/kenya.db data/kenya.db",
+    "prepack": "npm run build && npm run prepare-db",
     "test": "node --loader ts-node/esm --test tests/*.test.ts",
     "lint": "eslint src",
     "format": "prettier --write ."
