@@ -1,5 +1,5 @@
 {
-  "name": "@kenya-data/core",
+  "name": "kenya-data-core",
   "version": "0.1.0",
   "description": "TypeScript SDK for the Kenya Data structured dataset",
   "license": "MIT",
@@ -12,7 +12,10 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist", "data/kenya.db"],
+  "files": [
+    "dist",
+    "data/kenya.db"
+  ],
   "scripts": {
     "build": "tsc",
     "prepare-db": "mkdir -p data && cp ../../data/kenya.db data/kenya.db",
