@@ -21,12 +21,13 @@ kenya.wards.in_constituency("Naivasha")
 ```
 
 ```typescript
-import { Kenya } from "@kenya-data/core";
+import { Kenya } from "kenya-data-core";
 
 const kenya = new Kenya();
 kenya.counties.list();
 kenya.counties.get("Nakuru");
 kenya.constituencies.inCounty("Nakuru");
+kenya.wards.inConstituency("Naivasha");
 ```
 
 ## Status: real data, pending independent verification
@@ -99,22 +100,21 @@ SDK version and dataset version are independent — see
 
 ## Installation
 
-Not yet published to PyPI or npm. Until then, install from a local
-checkout:
+Install from PyPI/npm:
+
+```bash
+pip install kenya-data
+npm install kenya-data-core
+```
+
+From a local checkout:
 
 ```bash
 git clone https://github.com/ToshGitonga0/kenya-data.git
 cd kenya-data
-make build-db   # builds data/kenya.db from data/approved/
+make build-db
 pip install -e packages/python
 cd packages/typescript && npm install && npm run build
-```
-
-Once published (see [docs/publishing.md](docs/publishing.md)):
-
-```bash
-pip install kenya-data
-npm install @kenya-data/core
 ```
 
 ## Development
@@ -136,9 +136,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full research → validate
 
 ## Publishing
 
-Nothing is published by this scaffold. See
-[docs/publishing.md](docs/publishing.md) for the intended future release
-flow.
+Published packages are available via:
+
+```bash
+pip install kenya-data
+npm install kenya-data-core
+```
+
+See [docs/publishing.md](docs/publishing.md) for the release flow.
 
 ## License
 
