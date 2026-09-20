@@ -1,7 +1,6 @@
 # Publishing
 
-Nothing is published by `setup.sh`, and no step below runs
-automatically today. This documents the intended future release flow.
+This documents the intended future release flow.
 
 ```
 Research
