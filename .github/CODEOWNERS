@@ -1,0 +1,12 @@
+* @ToshGitonga0
+
+# Repository ownership and review routing
+# Keep this file explicit and narrow. Only add trusted maintainers here.
+
+/data/ @ToshGitonga0
+/research/ @ToshGitonga0
+/database/ @ToshGitonga0
+/packages/python/ @ToshGitonga0
+/packages/typescript/ @ToshGitonga0
+/docs/ @ToshGitonga0
+/.github/ @ToshGitonga0
