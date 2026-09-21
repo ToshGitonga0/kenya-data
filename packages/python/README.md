@@ -1,5 +1,11 @@
 # kenya-data (Python SDK)
 
+Install the published package:
+
+```bash
+pip install kenya-data
+```
+
 ```python
 from kenya_data import Kenya
 
@@ -15,6 +21,6 @@ kenya.dataset.version
 kenya.dataset.updated_at
 ```
 
-Backed by the SQLite database built from `database/schema/schema.sql` —
-see the repository root [README](../../README.md) and
-[docs/sdk-design.md](../../docs/sdk-design.md).
+The package includes the SQLite database and is backed by the database built
+from `database/schema/schema.sql` — see the repository root [README](../../README.md)
+and [docs/sdk-design.md](../../docs/sdk-design.md).

@@ -1,6 +1,6 @@
 # Publishing
 
-This documents the intended future release flow.
+This documents the current manual release flow for the project and its SDK packages.
 
 ```
 Research
@@ -14,9 +14,15 @@ Research
   -> Version               (bump SDK and/or dataset versions per docs/versioning.md)
   -> Publish Python package (twine upload, manual)
   -> Publish npm package    (npm publish, manual)
+  -> Create GitHub release  (tag the SDK version and document the changes)
 ```
 
 Both the Python package build/publish and the npm package
 build/publish are manual, deliberate actions taken by a maintainer —
 this repository does not include CI automation that publishes
 packages.
+
+Published packages:
+
+- PyPI: [`kenya-data`](https://pypi.org/project/kenya-data/)
+- npm: [`kenya-data-core`](https://www.npmjs.com/package/kenya-data-core)

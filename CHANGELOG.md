@@ -17,6 +17,8 @@ releases are versioned separately — see
 
 ### Fixed
 - Corrected the TypeScript package metadata used for npm publication.
+- Packaged the SQLite database with both SDK distributions so the default constructors work after installation.
+- Improved packaged-database resolution while retaining a local repository fallback for development.
 
 ## [0.1.0] - 2026-09-20
 
@@ -36,7 +38,6 @@ releases are versioned separately — see
   re-verified against the IEBC/KNBS primary publications.
 - Locations, sub-locations, boundary polygons, and data beyond the 2019 census
   reference year are not included yet.
-- Python and TypeScript packages are not yet published to PyPI or npm.
 
 ## [Unreleased]
 
