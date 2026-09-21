@@ -7,58 +7,47 @@
 
 > A structured, versioned, and developer-friendly data layer for Kenya.
 
-**Kenya Data** provides structured Kenyan administrative and geographic data through a portable SQLite database and native Python and TypeScript SDKs.
+Kenya Data provides structured Kenyan administrative and geographic data through a portable SQLite database and native Python and TypeScript SDKs.
 
 The project currently provides:
 
 * **47 counties**
 * **290 constituencies**
 * **1,450 wards**
-* County → constituency relationships
-* Constituency → ward relationships
+* County → constituency and constituency → ward relationships
 * Stable identifiers and codes
 * Dataset version and update metadata
 * A bundled, read-only SQLite database
 * Native Python and TypeScript APIs
 
-The same dataset is distributed across both SDKs, allowing developers to work with Kenya's administrative geography without maintaining their own CSV files, spreadsheets, database imports, or scraping pipelines.
+## Current release
 
----
+| Package | Registry | Version |
+| --- | --- | ---: |
+| Python | [PyPI](https://pypi.org/project/kenya-data/) | `0.1.1` |
+| TypeScript | [npm](https://www.npmjs.com/package/kenya-data-core) | `0.1.1` |
 
-## Current Release
+The current dataset is `2026.09-iebc2012-knbs2019` (`approved`), updated on `2026-09-20`.
 
-### SDKs
+## Packages in action
 
-| Package    | Registry | Version |
-| ---------- | -------- | ------: |
-| Python     | PyPI     | `0.1.1` |
-| TypeScript | npm      | `0.1.1` |
+The same dataset is published for both Python and TypeScript, so applications can use the SDK that best fits their stack. The screenshots below show the packages as published in their respective registries.
 
-Install directly from the public package registries:
+### Python package on PyPI
 
-```bash
-pip install kenya-data
-```
+The Python SDK is available on PyPI as [`kenya-data`](https://pypi.org/project/kenya-data/), making the administrative dataset installable with standard Python tooling.
 
-```bash
-npm install kenya-data-core
-```
+![kenya-data Python package on PyPI](screenshots/kenyan-data-pypi-package.png)
 
-### Dataset
+### TypeScript package on npm
 
-```text
-Version: 2026.09-iebc2012-knbs2019
-Status: approved
-Updated: 2026-09-20 18:59:13
-```
+The TypeScript SDK is available on npm as [`kenya-data-core`](https://www.npmjs.com/package/kenya-data-core), with the bundled SQLite database ready for use in JavaScript and TypeScript projects.
 
-The SDK version and dataset version are intentionally separate. A package release identifies the SDK, while the dataset version identifies the underlying data snapshot.
+![kenya-data-core TypeScript package on npm](screenshots/kenyan-data-npm-package.png)
 
----
+## Quick start
 
-# Quick Start
-
-## Python
+### Python
 
 ```python
 from kenya_data import Kenya
@@ -73,9 +62,13 @@ print(kenya.wards.in_constituency("Naivasha"))
 kenya.close()
 ```
 
----
+Install it with:
 
-## TypeScript
+```bash
+pip install kenya-data
+```
+
+### TypeScript
 
 ```typescript
 import { Kenya } from "kenya-data-core";
@@ -90,227 +83,27 @@ console.log(kenya.wards.inConstituency("Naivasha"));
 kenya.close();
 ```
 
----
+Install it with:
 
-# What You Get
+```bash
+npm install kenya-data-core
+```
 
-Kenya Data is designed around a simple administrative hierarchy:
+## What you get
+
+Kenya Data models a simple administrative hierarchy:
 
 ```text
 Kenya
-│
 ├── Counties (47)
-│   │
 │   └── Constituencies (290)
-│       │
 │       └── Wards (1,450)
-│
 └── Dataset metadata
 ```
 
-Each level has stable identifiers and relationships to the level above it.
+Every record has stable identifiers and relationships to the level above it. For example, Nairobi contains 17 constituencies, and those relationships are represented directly in the dataset.
 
-For example:
-
-```text
-Nairobi County
-    │
-    ├── Dagoretti North
-    ├── Dagoretti South
-    ├── Embakasi Central
-    ├── Embakasi East
-    ├── Embakasi North
-    ├── Embakasi South
-    ├── Embakasi West
-    ├── Kamukunji
-    ├── Kasarani
-    ├── Kibra
-    ├── Langata
-    ├── Makadara
-    ├── Mathare
-    ├── Roysambu
-    ├── Ruaraka
-    ├── Starehe
-    └── Westlands
-```
-
-Nairobi contains **17 constituencies**, and those relationships are represented directly in the dataset.
-
----
-
-# API Overview
-
-## Counties
-
-### List all counties
-
-Python:
-
-```python
-kenya.counties.list()
-```
-
-TypeScript:
-
-```typescript
-kenya.counties.list();
-```
-
-Returns all **47 counties**.
-
-### Get a county
-
-Python:
-
-```python
-kenya.counties.get("Nairobi")
-```
-
-TypeScript:
-
-```typescript
-kenya.counties.get("Nairobi");
-```
-
-County records include fields such as:
-
-```text
-id
-code
-name
-capital
-status
-```
-
-Example:
-
-```text
-id: 47
-code: KE047
-name: Nairobi
-capital: Nairobi
-status: approved
-```
-
----
-
-## Constituencies
-
-### List all constituencies
-
-Python:
-
-```python
-kenya.constituencies.list()
-```
-
-TypeScript:
-
-```typescript
-kenya.constituencies.list();
-```
-
-Returns all **290 constituencies**.
-
-### Get a constituency
-
-Python:
-
-```python
-kenya.constituencies.get("Naivasha")
-```
-
-TypeScript:
-
-```typescript
-kenya.constituencies.get("Naivasha");
-```
-
-### Get constituencies within a county
-
-Python:
-
-```python
-kenya.constituencies.in_county("Nairobi")
-```
-
-TypeScript:
-
-```typescript
-kenya.constituencies.inCounty("Nairobi");
-```
-
-County names and county codes can be used for relationship queries where supported.
-
----
-
-## Wards
-
-### List all wards
-
-Python:
-
-```python
-kenya.wards.list()
-```
-
-TypeScript:
-
-```typescript
-kenya.wards.list();
-```
-
-Returns all **1,450 wards**.
-
-### Get a ward
-
-Python:
-
-```python
-kenya.wards.get("Ward Name")
-```
-
-TypeScript:
-
-```typescript
-kenya.wards.get("Ward Name");
-```
-
-### Get wards within a constituency
-
-Python:
-
-```python
-kenya.wards.in_constituency("Naivasha")
-```
-
-TypeScript:
-
-```typescript
-kenya.wards.inConstituency("Naivasha");
-```
-
-### Get wards within a county
-
-Python:
-
-```python
-kenya.wards.in_county("Nakuru")
-```
-
-TypeScript:
-
-```typescript
-kenya.wards.inCounty("Nakuru");
-```
-
----
-
-# Dataset Metadata
-
-The dataset exposes its own version and update information.
-
-Python:
+The SDKs also expose dataset metadata:
 
 ```python
 print(kenya.dataset.version)
@@ -318,61 +111,21 @@ print(kenya.dataset.updated_at)
 print(kenya.dataset.info())
 ```
 
-TypeScript:
-
 ```typescript
 console.log(kenya.dataset.version);
 console.log(kenya.dataset.updatedAt);
 console.log(kenya.dataset.info());
 ```
 
-Current dataset:
+## Data integrity
 
-```text
-Version: 2026.09-iebc2012-knbs2019
-Status: approved
-Updated: 2026-09-20 18:59:13
-```
+The published `kenya-data==0.1.1` and `kenya-data-core@0.1.1` packages have been tested from clean environments using PyPI and npm. Both distributions were verified to provide:
 
-This makes it possible for applications to identify exactly which dataset snapshot they are using.
-
----
-
-# Data Integrity
-
-The published release has been tested as a real external consumer installation from both package registries.
-
-### TypeScript / npm
-
-The published `kenya-data-core@0.1.1` package was installed into a clean environment directly from npm.
-
-Verified:
-
-* 47 counties
-* 290 constituencies
-* 1,450 wards
-* Bundled SQLite database loads successfully
-* Dataset metadata is available
-* Nairobi resolves correctly
-* Nairobi contains 17 constituencies
-* Every constituency references an existing county
-* Every ward references an existing constituency
-
-### Python / PyPI
-
-The published `kenya-data==0.1.1` package was installed into a clean Python virtual environment directly from PyPI.
-
-Verified:
-
-* 47 counties
-* 290 constituencies
-* 1,450 wards
-* Bundled SQLite database loads successfully
-* Dataset metadata matches the TypeScript distribution
-* Nairobi resolves correctly
-* Nairobi contains 17 constituencies
-* Every constituency references an existing county
-* Every ward references an existing constituency
+* 47 counties, 290 constituencies, and 1,450 wards
+* A working bundled SQLite database
+* Matching dataset metadata
+* Correct Nairobi and constituency relationships
+* Valid constituency-to-county and ward-to-constituency references
 
 Relationship validation returned:
 
@@ -381,26 +134,9 @@ Constituencies with invalid county: 0
 Wards with invalid constituency: 0
 ```
 
-The npm and PyPI distributions therefore expose the same underlying dataset and administrative relationships.
+## Data provenance
 
----
-
-# Data Provenance
-
-Kenya Data is designed around explicit data provenance rather than treating an online dataset as authoritative simply because it exists.
-
-The project documents:
-
-* Data sources
-* Source retrieval information
-* Dataset versions
-* Transformations
-* Validation procedures
-* Data-model decisions
-* Known discrepancies
-* Approval status
-
-The current dataset incorporates Kenyan administrative and geographic information derived from documented sources including IEBC delimitation data and KNBS census data.
+Kenya Data documents its sources, retrieval information, dataset versions, transformations, validation procedures, data-model decisions, known discrepancies, and approval status. The current dataset incorporates documented Kenyan administrative and geographic information, including IEBC delimitation data and KNBS census data.
 
 See:
 
@@ -409,337 +145,84 @@ See:
 * [Source registry](research/source-registry/)
 * [Approved data](data/approved/)
 
----
+## Architecture
 
-# Architecture
-
-The project follows a pipeline from source material to developer-facing packages:
+The project follows this pipeline:
 
 ```text
-DATA SOURCES
-     │
-     ▼
-RESEARCH
-     │
-     ▼
-SOURCE REGISTRY
-     │
-     ▼
-INGESTION
-     │
-     ▼
-VALIDATION
-     │
-     ▼
-APPROVED DATA
-     │
-     ▼
-SQLite (kenya.db)
-     │
-     ├───────────────┐
-     ▼               ▼
- Python SDK      TypeScript SDK
-     │               │
-     ▼               ▼
-   PyPI             npm
+Data sources → Research → Source registry → Ingestion → Validation
+      → Approved data → SQLite → Python SDK / TypeScript SDK
 ```
 
-The SQLite database is the common distribution layer used by both SDKs.
+SQLite is the common distribution layer used by both SDKs. It is portable, serverless, self-contained, easy to inspect, and requires no API key or database server for ordinary queries.
 
-More detail:
+More detail is available in:
 
 * [Architecture](docs/architecture.md)
 * [Data model](docs/data-model.md)
 * [Data quality](docs/data-quality.md)
 * [SDK design](docs/sdk-design.md)
+* [Versioning](docs/versioning.md)
 
----
+## Installation and verification
 
-# Why SQLite?
-
-Kenya Data uses SQLite as its canonical distribution format because it is:
-
-* Portable
-* Serverless
-* Self-contained
-* Easy to inspect
-* Suitable for local applications
-* Easy to bundle inside language packages
-* Independent of an external database server
-
-A developer can install the package and start querying the data immediately.
-
-No database server is required.
-
-No API key is required.
-
-No network request is required for ordinary queries.
-
-The published packages contain the database required to use the core dataset.
-
----
-
-# Who Is This For?
-
-Kenya Data is intended for developers and researchers building applications that need structured Kenyan geographic or administrative data.
-
-Examples include:
-
-* Kenyan address and location systems
-* Data collection applications
-* Government and civic technology
-* Analytics platforms
-* Research projects
-* Mapping applications
-* Web scraping pipelines
-* Data engineering projects
-* Statistical applications
-* Administrative dashboards
-* Geographic filtering
-* County and constituency selectors
-* Offline-first applications
-* Prototypes and developer tools
-
-Instead of maintaining a custom copy of Kenyan administrative data, an application can depend on a versioned package.
-
----
-
-# Installation
-
-## Python
-
-Requires Python 3.9+.
+Python requires Python 3.9+:
 
 ```bash
 pip install kenya-data
-```
-
-Verify:
-
-```bash
 python -c "from kenya_data import Kenya; print(len(Kenya().counties.list()))"
 ```
 
-Expected:
+Expected output: `47`.
 
-```text
-47
-```
-
----
-
-## TypeScript / JavaScript
-
-Install with npm:
+For TypeScript and JavaScript:
 
 ```bash
 npm install kenya-data-core
-```
-
-Verify the package:
-
-```bash
 npm list kenya-data-core
 ```
 
-Use it:
-
-```typescript
-import { Kenya } from "kenya-data-core";
-
-const kenya = new Kenya();
-
-console.log(kenya.counties.list().length);
-
-kenya.close();
-```
-
-Expected:
-
-```text
-47
-```
-
----
-
-# Local Development
-
-Clone the repository:
+## Local development
 
 ```bash
 git clone https://github.com/ToshGitonga0/kenya-data.git
 cd kenya-data
-```
-
-Install development dependencies:
-
-```bash
 make setup
-```
-
-Build the database:
-
-```bash
 make build-db
-```
-
-Run validation:
-
-```bash
 make validate
-```
-
-Run tests:
-
-```bash
 make test
-```
-
-Run linting:
-
-```bash
 make lint
 ```
 
-Format the project:
+Use `make inspect-db` to inspect the generated SQLite database.
 
-```bash
-make format
-```
-
-Inspect the SQLite database:
-
-```bash
-make inspect-db
-```
-
----
-
-# Project Structure
+## Project structure
 
 ```text
 kenya-data/
-│
-├── data/
-│   ├── approved/
-│   └── kenya.db
-│
-├── docs/
-│   ├── architecture.md
-│   ├── data-model.md
-│   ├── data-quality.md
-│   ├── data-research.md
-│   ├── publishing.md
-│   ├── sdk-design.md
-│   └── source-policy.md
-│
-├── packages/
-│   ├── python/
-│   └── typescript/
-│
-├── research/
-│   ├── discrepancies/
-│   └── source-registry/
-│
-├── tests/
-│
+├── data/          # Approved data and the SQLite database
+├── docs/          # Architecture, quality, research, and SDK documentation
+├── packages/      # Python and TypeScript SDKs
+├── research/      # Sources, investigations, and discrepancies
+├── screenshots/   # Registry screenshots used in this README
+├── Makefile
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
 ```
 
----
+## Contributing
 
-# Versioning
-
-Kenya Data has two independent versioning layers.
-
-### SDK version
-
-The package release version.
-
-Examples:
-
-```text
-kenya-data 0.1.1
-kenya-data-core 0.1.1
-```
-
-### Dataset version
-
-The version of the underlying data snapshot.
-
-Example:
-
-```text
-2026.09-iebc2012-knbs2019
-```
-
-This distinction allows the dataset to evolve independently from SDK implementation changes.
-
-See [docs/versioning.md](docs/versioning.md).
-
----
-
-# Contributing
-
-Contributions are welcome.
-
-Depending on the change, contributions may involve:
-
-1. Research
-2. Source documentation
-3. Data transformation
-4. Validation
-5. Tests
-6. Documentation
-7. SDK implementation
-
-Changes to the dataset should preserve provenance and validation information.
+Contributions are welcome. Depending on the change, contributions may involve research, source documentation, data transformation, validation, tests, documentation, or SDK implementation. Changes to the dataset should preserve provenance and validation information.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow.
 
----
+## License
 
-# Published Packages
+Kenya Data is released under the MIT License. See [LICENSE](LICENSE) for the full license text.
 
-### Python
+## Project links
 
-**PyPI:** `kenya-data`
-
-```bash
-pip install kenya-data
-```
-
-[View on PyPI](https://pypi.org/project/kenya-data/)
-
-### TypeScript
-
-**npm:** `kenya-data-core`
-
-```bash
-npm install kenya-data-core
-```
-
-[View on npm](https://www.npmjs.com/package/kenya-data-core)
-
----
-
-# License
-
-Kenya Data is released under the MIT License.
-
-See [LICENSE](LICENSE) for the full license text.
-
----
-
-## Project
-
-**Repository:**
-https://github.com/ToshGitonga0/kenya-data
-
-**Python package:**
-https://pypi.org/project/kenya-data/
-
-**TypeScript package:**
-https://www.npmjs.com/package/kenya-data-core
+* [Repository](https://github.com/ToshGitonga0/kenya-data)
+* [Python package on PyPI](https://pypi.org/project/kenya-data/)
+* [TypeScript package on npm](https://www.npmjs.com/package/kenya-data-core)
