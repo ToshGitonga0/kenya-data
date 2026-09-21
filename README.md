@@ -73,8 +73,6 @@ print(kenya.wards.in_constituency("Naivasha"))
 kenya.close()
 ```
 
-The Python API follows standard Python naming conventions such as `in_county` and `updated_at`.
-
 ---
 
 ## TypeScript
@@ -91,8 +89,6 @@ console.log(kenya.wards.inConstituency("Naivasha"));
 
 kenya.close();
 ```
-
-The TypeScript API follows JavaScript/TypeScript naming conventions such as `inCounty` and `updatedAt`.
 
 ---
 
