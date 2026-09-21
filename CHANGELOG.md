@@ -7,7 +7,7 @@ Note: this file tracks the **project** (code, schema, SDKs). Dataset
 releases are versioned separately — see
 [docs/versioning.md](docs/versioning.md).
 
-## [0.1.1] - 2026-09-20
+## [0.1.1] - 2026-09-21
 
 ### Changed
 - Published the Python package to PyPI as `kenya-data`.
