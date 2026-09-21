@@ -1,6 +1,6 @@
 {
   "name": "kenya-data-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TypeScript SDK for the Kenya Data structured dataset",
   "license": "MIT",
   "type": "module",

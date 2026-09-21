@@ -7,6 +7,17 @@ Note: this file tracks the **project** (code, schema, SDKs). Dataset
 releases are versioned separately — see
 [docs/versioning.md](docs/versioning.md).
 
+## [0.1.1] - 2026-09-20
+
+### Changed
+- Published the Python package to PyPI as `kenya-data`.
+- Published the TypeScript package to npm as `kenya-data-core`.
+- Aligned package metadata and installation documentation with the published package names.
+- Synchronized Python and TypeScript package versions at `0.1.1`.
+
+### Fixed
+- Corrected the TypeScript package metadata used for npm publication.
+
 ## [0.1.0] - 2026-09-20
 
 ### Added
