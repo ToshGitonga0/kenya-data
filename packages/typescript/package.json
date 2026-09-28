@@ -1,7 +1,18 @@
 {
   "name": "kenya-data-core",
-  "version": "0.1.1",
-  "description": "TypeScript SDK for the Kenya Data structured dataset",
+  "version": "0.1.2",
+  "description": "TypeScript SDK for Kenyan administrative data (counties, constituencies, wards) bundled as a SQLite database",
+  "keywords": [
+    "kenya",
+    "kenya-data",
+    "administrative-data",
+    "counties",
+    "constituencies",
+    "wards",
+    "sqlite",
+    "geodata",
+    "typescript-sdk"
+  ],
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -45,7 +56,7 @@
   "bugs": {
     "url": "https://github.com/ToshGitonga0/kenya-data/issues"
   },
-  "author": "ToshGitonga0",
+  "author": "Charles Gitonga <gitongachas@gmail.com>",
   "publishConfig": {
     "access": "public"
   }

@@ -24,8 +24,8 @@ The project currently provides:
 
 | Package | Registry | Version |
 | --- | --- | ---: |
-| Python | [PyPI](https://pypi.org/project/kenya-data/) | `0.1.1` |
-| TypeScript | [npm](https://www.npmjs.com/package/kenya-data-core) | `0.1.1` |
+| Python | [PyPI](https://pypi.org/project/kenya-data/) | `0.1.2` |
+| TypeScript | [npm](https://www.npmjs.com/package/kenya-data-core) | `0.1.2` |
 
 The current dataset is `2026.09-iebc2012-knbs2019` (`approved`), updated on `2026-09-20`.
 

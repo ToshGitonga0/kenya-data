@@ -7,6 +7,18 @@ Note: this file tracks the **project** (code, schema, SDKs). Dataset
 releases are versioned separately — see
 [docs/versioning.md](docs/versioning.md).
 
+## [0.1.2] - 2026-09-28
+
+### Changed
+- Package metadata only; no data or API changes.
+- Set the package author to Charles Gitonga (previously "Kenya Data contributors" on PyPI, a bare handle on npm).
+- Added search keywords to both packages and expanded PyPI trove classifiers.
+- Expanded the package descriptions.
+
+### Fixed
+- `kenya_data.__version__` reported `0.1.0`; it now matches the package version.
+- `package-lock.json` root version reported `0.1.0`; it now matches the package version.
+
 ## [0.1.1] - 2026-09-21
 
 ### Changed
